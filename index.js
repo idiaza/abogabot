@@ -34,8 +34,8 @@ const BOT_CONFIGURATION = (process.env.NODE_ENV || DEV_ENVIRONMENT);
 const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
 
 const adapter = new BotFrameworkAdapter({
-    appId: endpointConfig.appId || process.env.microsoftAppID,
-    appPassword: endpointConfig.appPassword || process.env.microsoftAppPassword
+    appId: endpointConfig.appId || process.env.MicrosoftAppId,
+    appPassword: endpointConfig.appPassword || process.env.MicrosoftAppPassword
 });
 
 adapter.onTurnError = async (context, error) => {
