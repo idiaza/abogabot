@@ -6,7 +6,7 @@ const {
   MemoryStorage,
   UserState
 } = require('botbuilder');
-const { BotConfiguration } = require('botframework-config');
+// const { BotConfiguration } = require('botframework-config');
 const { AbogaBot } = require('./bot');
 
 const ENV_FILE = path.join(__dirname, '.env');
@@ -17,25 +17,25 @@ server.listen(process.env.port || process.env.PORT || 3978, function() {
     // console.log(`\n${ server.name } listening to ${ server.url }.`);
 });
 
-const BOT_FILE = path.join(__dirname, (process.env.botFilePath || ''));
+// const BOT_FILE = path.join(__dirname, (process.env.botFilePath || ''));
 
-let botConfig;
-try {
-    // Read bot configuration from .bot file.
-    botConfig = BotConfiguration.loadSync(BOT_FILE, process.env.botFileSecret);
-} catch (err) {
-    process.exit();
-}
+// let botConfig;
+// try {
+//     // Read bot configuration from .bot file.
+//     botConfig = BotConfiguration.loadSync(BOT_FILE, process.env.botFileSecret);
+// } catch (err) {
+//     process.exit();
+// }
 
-const DEV_ENVIRONMENT = 'development';
+// const DEV_ENVIRONMENT = 'development';
 
-const BOT_CONFIGURATION = (process.env.NODE_ENV || DEV_ENVIRONMENT);
+// const BOT_CONFIGURATION = (process.env.NODE_ENV || DEV_ENVIRONMENT);
 
-const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
+// const endpointConfig = botConfig.findServiceByNameOrId(BOT_CONFIGURATION);
 
 const adapter = new BotFrameworkAdapter({
-    appId: endpointConfig.appId || process.env.MicrosoftAppId,
-    appPassword: endpointConfig.appPassword || process.env.MicrosoftAppPassword
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword
 });
 
 adapter.onTurnError = async (context, error) => {
