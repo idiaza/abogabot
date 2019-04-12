@@ -39,9 +39,9 @@ const MENU = 'temas';
 // const GREETING_UTTERANCE = 'hola';
 
 const TOPICS_TITLES = [
-  'Incumplimiento de entrega', // de producto comprado a distancia
-  'Operaciones no reconocidas',
-  'Incumplimiento de extorno',
+  'Inc. Entrega', // de producto comprado a distancia
+  'Ops. No reconocidas',
+  'Inc. Extorno',
 ];
 
 const TOPICS = require('./flow.js');
