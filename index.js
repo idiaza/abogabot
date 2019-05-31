@@ -14,7 +14,7 @@ const { AbogaBot } = require('./bot');
 
 let server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function() {
-    // console.log(`\n${ server.name } listening to ${ server.url }.`);
+    console.log(`\n${ server.name } listening to ${ server.url }.`);
 });
 
 // const BOT_FILE = path.join(__dirname, (process.env.botFilePath || ''));
@@ -53,8 +53,8 @@ const userState = new UserState(memoryStorage);
 const bot = new AbogaBot(conversationState, userState);
 
 server.post('/api/messages', (req, res) => {
-  // console.log('asdf');
-    adapter.processActivity(req, res, async (turnContext) => {
-        await bot.onTurn(turnContext);
-    });
+  console.log('asdf');
+  adapter.processActivity(req, res, async (turnContext) => {
+      await bot.onTurn(turnContext);
+  });
 });
