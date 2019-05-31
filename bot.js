@@ -38,13 +38,15 @@ const HELP = 'ayuda';
 const MENU = 'temas';
 // const GREETING_UTTERANCE = 'hola';
 
-const TOPICS_TITLES = [
-  'Inc. Entrega', // de producto comprado a distancia
-  'Ops. No reconocidas',
-  'Inc. Extorno',
-];
-
 const TOPICS = require('./flow.js');
+// const TOPICS_TITLES = [
+//   'Inc. Entrega', // de producto comprado a distancia
+//   'Ops. No reconocidas',
+//   'Inc. Extorno',
+// ];
+const TOPICS_TITLES = TOPICS.map(function (topic) {
+  return topic.title;
+});
 
 class AbogaBot {
 
@@ -62,7 +64,7 @@ class AbogaBot {
     this.dialogs
       .add(promptTopic)
       .add(new ChoicePrompt(PROMPT_CONFIRM))
-    
+
     this.dialogs
       .add(new TextPrompt(PROMPT_NAME))
       .add(new TextPrompt(PROMPT_DOCUMENT))
@@ -147,7 +149,7 @@ class AbogaBot {
         return true;
       }
     }
-    
+
     return false;
   }
 
@@ -184,7 +186,7 @@ class AbogaBot {
         }
 
         await dc.cancelAllDialogs();
-        
+
         await dc.context.sendActivity(`Perfecto, entonces te mostraré nuevamente el listado de temas.`);
         await dc.beginDialog(WATERFALL_GET_TOPIC);
 
@@ -216,30 +218,30 @@ class AbogaBot {
                 // Examine results from active dialog
                 switch (dialogResult.status) {
                 case DialogTurnStatus.empty:
-                    if (this.contains(utterance, ['hola', 'hi', 'como estas'])) {
-                        
-                        await dc.context.sendActivities([
-                          { type: 'typing' }, // ActivityTypes.Typing
-                          { type: 'delay', value: 2000 },
-                          // { type: 'message', text: 'Hello... How are you?' }
-                        ]);
-                        await dc.beginDialog(WATERFALL_WELCOME);
-                        
-                    } else {
-                        // Help or no intent identified, either way, let's provide some help
-                        // to the user
-                        await dc.context.sendActivity(`Aún no comprendo lo que intentas decirme. Intenta escribiendo "Hola", "Ayuda" or "Cancelar".`); // I didn't understand what you just said to me. Try saying 'hello', 'help' or 'cancel'.
-                    }
-                    break;
+                  if (this.contains(utterance, ['hola', 'hi', 'como estas'])) {
+
+                    await dc.context.sendActivities([
+                      { type: ActivityTypes.Typing }, // ActivityTypes.Typing
+                      { type: 'delay', value: 2000 },
+                      // { type: 'message', text: 'Hello... How are you?' }
+                    ]);
+                    await dc.beginDialog(WATERFALL_WELCOME);
+
+                  } else {
+                    // Help or no intent identified, either way, let's provide some help
+                    // to the user
+                    await dc.context.sendActivity(`Aún no comprendo lo que intentas decirme. Intenta escribiendo "Hola", "Ayuda" or "Cancelar".`); // I didn't understand what you just said to me. Try saying 'hello', 'help' or 'cancel'.
+                  }
+                  break;
                 case DialogTurnStatus.waiting:
-                    // The active dialog is waiting for a response from the user, so do nothing
-                    break;
+                  // The active dialog is waiting for a response from the user, so do nothing
+                  break;
                 case DialogTurnStatus.complete:
-                    await dc.endDialog();
-                    break;
+                  await dc.endDialog();
+                  break;
                 default:
-                    await dc.cancelAllDialogs();
-                    break;
+                  await dc.cancelAllDialogs();
+                  break;
                 }
             }
         }
@@ -284,7 +286,7 @@ class AbogaBot {
     //       console.log('empty');
     //           // If there is no active dialog, we should clear the user info and start a new dialog.
     //           await this.userProfile.set(turnContext, {});
-              
+
     //           if (this.contains(turnContext.activity.text, ['hola', 'hi', 'como estas'])) {
     //             await dialogContext.beginDialog(WATERFALL_WELCOME);
     //           } else {
@@ -300,7 +302,7 @@ class AbogaBot {
     //       console.log('waiting');
     //           // If there is an active dialog, we don't need to do anything here.
     //           if (turnContext.activity.text.toLowerCase() === 'temas') {
-                
+
     //             // await this.userProfile.set(turnContext, {});
 
     //             await dialogContext.endDialog();
@@ -521,7 +523,7 @@ class AbogaBot {
   makePrePromptForYesOrNo(topicIndex) {
     const description = TOPICS[topicIndex].description;
     const questionsLength = TOPICS[topicIndex].questions.length;
-    
+
     return async function (step) {
       await this.clearUserAnswers(step.context, questionsLength);
       // await step.context.sendActivity('Gracias');
@@ -536,7 +538,7 @@ class AbogaBot {
       if (questionIndex > 0) {
         // if (step.result) {
           await this.saveUserAnswer(step.context, questionIndex -1, step.result.value);
-          
+
           const result = await this.getResult(step.context, topicIndex);
           if (result) {
             await step.context.sendActivity(this.makeResultMessage(result));
@@ -568,11 +570,11 @@ class AbogaBot {
       // if (step.result) {
         await this.saveUserAnswer(step.context, TOPICS[topicIndex].questions.length - 1, step.result.value);
       // }
-      
+
       const result = await this.getResult(step.context, topicIndex);
 
       // console.log(result);
-      
+
       await step.context.sendActivity(this.makeResultMessage(result));
       // await step.context.sendActivity('asdfasdf');
     }

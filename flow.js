@@ -35,6 +35,7 @@ module.exports = [
       },
       {
         result: 'No contingente',
+        soluction: `asdfasdf`,
         paths: [
           // A     B     C     D     E     F     G     H     I
           [true, true, true, true, true, null, null, null, null],
@@ -82,22 +83,18 @@ module.exports = [
         solution: `Orden de compra no sujeta a evaluación: según requerimiento del cliente, cuando haya stock, entregar producto solicitado u otro producto de idénticas o superiores características sin cobros adicionales; o, gestionar el monto reservado o devolver en efectivo el monto cobrado.                          Orden de compra rechazada: gestionar el extorno del monto reservado o devolver en efectivo el monto cobrado                          Orden de compra validada: entregar un producto sustituto con idénticas o superiores características sin cobros adicionales y, en caso se haya gestionado unilateralmente el extorno, en forma gratuita.`,
         paths: [
           // A     B     C     D     E     F     G     H     I
-          [true, true, true, true, false, null, null, null, null],
-          [true, true, true, false, null, null, null, null, null],
-          [true, true, false, null, null, null, null, null, null],
-          [true, false, null, null, null, true, true, true, null],
-          [true, false, null, null, null, true, true, false, false],
-          [true, false, null, null, null, true, false, null, null],
-          [true, false, null, null, null, false, null, null, null],
-          [false, null, null, null, null, null, null, null, null],
+          [true, null, null, null, null, null, null, null, null],
+          [false, true, false, null, null, null, null, null, null],
+          [false, true, true, false, null, null, null, null, null],
+          [false, false, null, null, null, null, null, null, null],
         ],
       },
       {
         result: 'No contingente',
+        solution: ``,
         paths: [
           // A     B     C     D     E     F     G     H     I
-          [true, true, true, true, true, null, null, null, null],
-          [true, false, null, null, null, true, true, false, true],
+          [false, true, true, true, null, null, null, null, null],
         ],
       }
     ],
@@ -137,13 +134,8 @@ module.exports = [
         solution: `Orden de compra no sujeta a evaluación: según requerimiento del cliente, cuando haya stock, entregar producto solicitado u otro producto de idénticas o superiores características sin cobros adicionales; o, gestionar el monto reservado o devolver en efectivo el monto cobrado.                          Orden de compra rechazada: gestionar el extorno del monto reservado o devolver en efectivo el monto cobrado                          Orden de compra validada: entregar un producto sustituto con idénticas o superiores características sin cobros adicionales y, en caso se haya gestionado unilateralmente el extorno, en forma gratuita.`,
         paths: [
           // A     B     C     D     E     F     G     H     I
-          [true, true, true, true, false, null, null, null, null],
-          [true, true, true, false, null, null, null, null, null],
           [true, true, false, null, null, null, null, null, null],
-          [true, false, null, null, null, true, true, true, null],
-          [true, false, null, null, null, true, true, false, false],
-          [true, false, null, null, null, true, false, null, null],
-          [true, false, null, null, null, false, null, null, null],
+          [true, false, null, null, null, null, null, null, null],
           [false, null, null, null, null, null, null, null, null],
         ],
       },
@@ -151,8 +143,7 @@ module.exports = [
         result: 'No contingente',
         paths: [
           // A     B     C     D     E     F     G     H     I
-          [true, true, true, true, true, null, null, null, null],
-          [true, false, null, null, null, true, true, false, true],
+          [true, true, true, null, null, null, null, null, null],
         ],
       }
     ],
@@ -160,6 +151,3 @@ module.exports = [
 
 
 ];
-
-
-
