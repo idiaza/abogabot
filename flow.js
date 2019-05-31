@@ -126,7 +126,7 @@ module.exports = [
       },
       {
         result: 'No contingente',
-        solution: `Gestionar el extorno.`
+        solution: `Gestionar el extorno.`,
         paths: [
           // A     B     C     D     E     F     G     H     I
           [true, true, true, null, null, null, null, null, null],
