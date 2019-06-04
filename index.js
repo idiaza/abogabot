@@ -53,7 +53,6 @@ const userState = new UserState(memoryStorage);
 const bot = new AbogaBot(conversationState, userState);
 
 server.post('/api/messages', (req, res) => {
-  console.log('asdf');
   adapter.processActivity(req, res, async (turnContext) => {
       await bot.onTurn(turnContext);
   });

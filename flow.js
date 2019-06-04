@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: 'Incumplimiento de entrega de producto comprado a distancia',
+    title: 'Inc. de entrega', //'Incumplimiento de entrega de producto comprado a distancia',
     description: `¿Qué información necesito para evaluar la contingencia del reclamo?
       \n- Número de orden de compra o datos que permitan identificar la transacción materia de reclamo(*).
       \n- Estado de la orden de compra.
@@ -60,7 +60,7 @@ module.exports = [
 
 
   {
-    title: 'Operaciones no reconocidas',
+    title: 'Ope. no reconocidas', //'Operaciones no reconocidas',
     description: `¿Qué información necesito para evaluar la contingencia del reclamo?
       \n- Voucher de la operación.
       \n- Ficha del Reniec.`,
@@ -104,7 +104,7 @@ module.exports = [
 
 
   {
-    title: 'Incumplimiento de extorno',
+    title: 'Inc. de extorno', //'Incumplimiento de extorno',
     description: `¿Qué información necesito para evaluar la contingencia del reclamo?
       \n- Fecha y monto de la transacción objeto de extorno.
       \n- Carta de extorno del procesador de pagos o constancia de solicitud de extorno al Banco Falabella.`,
