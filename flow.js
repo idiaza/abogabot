@@ -76,10 +76,10 @@ module.exports = [
         solution: `Gestionar el extorno de la operación.`,
         paths: [
           // A     B     C     D     E     F     G     H     I
-          [true, null, null, null, null, null, null, null, null],
-          [false, true, false, null, null, null, null, null, null],
-          [false, true, true, false, null, null, null, null, null],
-          [false, false, null, null, null, null, null, null, null],
+          [true, null, null, null],
+          [false, true, false, null],
+          [false, true, true, false],
+          [false, false, null, null],
         ],
       },
       {
@@ -87,7 +87,7 @@ module.exports = [
         solution: `Gestionar el extorno de la operación.`,
         paths: [
           // A     B     C     D     E     F     G     H     I
-          [false, true, true, true, null, null, null, null, null],
+          [false, true, true, true],
         ],
       }
     ],
@@ -119,9 +119,9 @@ module.exports = [
         solution: `Gestionar el extorno.`,
         paths: [
           // A     B     C     D     E     F     G     H     I
-          [true, true, false, null, null, null, null, null, null],
-          [true, false, null, null, null, null, null, null, null],
-          [false, null, null, null, null, null, null, null, null],
+          [true, true, false],
+          [true, false, null],
+          [false, null, null],
         ],
       },
       {
@@ -129,7 +129,7 @@ module.exports = [
         solution: `Gestionar el extorno.`,
         paths: [
           // A     B     C     D     E     F     G     H     I
-          [true, true, true, null, null, null, null, null, null],
+          [true, true, true],
         ],
       }
     ],
